@@ -1,22 +1,22 @@
 # Tidy Data Project
 ## Files submitted in the repository
-__README.md__: This file - provides a list of files submitted and a description of run_analysis.R
+__README.md__: This file - provides a list of files submitted, a description of run_analysis.R, instructions for running run_analysis.R, a brief description of the tidy data output, and instructions for viewing the tidy data output file.
 
-__UCI HAR dataset__: The folder containing the original data files and descriptions provided in the assignment description
+__UCI HAR dataset__: The folder containing the original data files provided in the assignment description
 
 __run_analysis.R__: The R script which takes the original data and produces a tidy data set
+
+__CodeBook.md__: A description of the variables contained in the final tidy data set
 
 __tidyData.txt__: The final tidy data set that meets the three tidy data criteria:
 * each variable is a column
 * each observation is a row
 * each type of observational unit is a table
 
-__CodeBook.md__: A description of the variables contained in the final tidy data set
-
 ## Running the run_analysis.R script to produce the tidy data set
 run_analysis.R assumes that both it and the "UCI HAR dataset" folder are in your working directory. If that it not the case, please change your working directory or add the script and folder to your working directory. 
 
-run_analysis.R also assumes you have installed the dplyr and tidyr packages. If you have not, please run <install.packages(c("dplyr", "tidyr"))> before running run_analysis.R.
+run_analysis.R also assumes you have installed the dplyr and tidyr packages. If you have not, please run `install.packages(c("dplyr", "tidyr"))` before running run_analysis.R.
 
 __Step 1:__ The script will first merge the X_test, y_test, and subject_test data so that the activity type and subject number are columns alongside the results from the test, and similarly with the X_train and y_train data. Then it will merge the test and train data into a single data set by rows. It will remove all but the final combined data set for tidiness.
 
@@ -37,5 +37,6 @@ The goal is to look at the mean of each measurement for each activity by each su
 
 ### How to view the tidy data set
 Ensure that the tidyData.csv file is in your working directory. Then run the following script in R to view the tidy data set:
-<tidyData <- read.table("tidyData.txt", header = TRUE)
-View(tidyData)>
+`tidyData <- read.table("tidyData.txt", header = TRUE)`
+
+`View(tidyData)`
