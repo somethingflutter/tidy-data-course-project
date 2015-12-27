@@ -36,7 +36,7 @@ The goal is to look at the mean of each measurement for each activity by each su
 * There is only one observational unit in the table (the mean values of measurements for each activity/subject combination)
 
 ### How to view the tidy data set
-Ensure that the tidyData.csv file is in your working directory. Then run the following script in R to view the tidy data set:
+Ensure that the tidyData.txt file is in your working directory. Then run the following script in R to view the tidy data set:
 `tidyData <- read.table("tidyData.txt", header = TRUE)`
 
 `View(tidyData)`
