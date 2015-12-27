@@ -40,5 +40,5 @@ rm("columnNames")
 ##      with the average of each variable for each activity and each subject.
 perActivity <- group_by(meanAndStdDevData, activity, subject)
 rm("meanAndStdDevData")
-summarise_each(perActivity, mean)
-
+results <- summarise_each(perActivity, funs(mean))
+write.table(results, "tidyData.txt")

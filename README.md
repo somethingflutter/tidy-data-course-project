@@ -2,16 +2,16 @@
 ## Files submitted in the repository
 __README.md__: This file - provides a list of files submitted and a description of run_analysis.R
 
-__run_analysis.R__: The R script which takes the original data and produces a tidy data set
-
-__CodeBook.md__: A description of the variables contained in the final tidy data set
-
 __UCI HAR dataset__: The folder containing the original data files and descriptions provided in the assignment description
 
-__TBD__: The final tidy data set that meets the three tidy data criteria:
+__run_analysis.R__: The R script which takes the original data and produces a tidy data set
+
+__tidyData.txt__: The final tidy data set that meets the three tidy data criteria:
 * each variable is a column
 * each observation is a row
 * each type of observational unit is a table
+
+__CodeBook.md__: A description of the variables contained in the final tidy data set
 
 ## Running the run_analysis.R script to produce the tidy data set
 run_analysis.R assumes that both it and the "UCI HAR dataset" folder are in your working directory. If that it not the case, please change your working directory or add the script and folder to your working directory. 
@@ -26,16 +26,16 @@ __Step 3:__ The script turns the activity number into a factor, and then assigns
 
 __Step 4:__ The script uses the variable names as given in features.txt to rename the columns so that they are understandable without having to consult the features file. 
 
-__Step 5:__ 
+__Step 5:__ The script groups the data by activity and subject, and then calculates the mean of each column for each activity/subject combination. The results are written to tidyData.txt, preserving the column names.
 
 ## Tidy Data output
 ### How the data is presented
 The goal is to look at the mean of each measurement for each activity by each subject. In order to satisfy the tidy data principles, the data is presented in the following way:
-* The observations from each activity are stored in separate tables
-* Each subjects's observations for the activity is a row in the tables
-* The mean of each measurement taken during an activity is its own column
-It could have been presented in other ways, such as each participant being a table with each activity being a row. Both would adhere to the tidy data principles and deliver the same answers. It just depends on how one wants to see the data grouped, and since the assignemnt was open-ended the presentation described above is the one I chose.
+* The observations from each participant for each activity are rows
+* Each measurement is a separate column
+* There is only one observational unit in the table (the mean values of measurements for each activity/subject combination)
 
 ### How to view the tidy data set
 Ensure that the tidyData.csv file is in your working directory. Then run the following script in R to view the tidy data set:
-
+<tidyData <- read.table("tidyData.txt", header = TRUE)
+View(tidyData)>
