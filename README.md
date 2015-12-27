@@ -14,7 +14,7 @@ __TBD__: The final tidy data set that meets the three tidy data criteria:
 * each type of observational unit is a table
 
 ## Running the run_analysis.R script to produce the tidy data set
-run_analysis.R assumes that the "UCI HAR dataset" folder is in the same folder as the script itself. Since the assignment instructions only require use of the actual measurments from the experiments and do not require information about the subjects themselves, I only use the X_test and X_train data files.
+run_analysis.R assumes that the "UCI HAR dataset" folder is in the same folder as the script itself. 
 
 run_analysis.R also assumes you have installed the dplyr and tidyr packages. If you have not, please run <install.packages("dplyr")> and/or <install.packages("tidyr")> before running run_analysis.R.
 
@@ -24,8 +24,18 @@ __Step 2:__ The variable descriptions for the original data show that some repre
 
 __Step 3:__ The script turns the activity number into a factor, and then assigns new human-readable labels to the factors. I used the mapping defined in activity_labels.txt
 
-__Step 4:__ 
+__Step 4:__ The script uses the variable names as given in features.txt to rename the columns so that they are understandable without having to consult the features file. 
 
+__Step 5:__ 
+
+## Tidy Data output
+### How the data is presented
+The goal is to look at the mean of each measurement on a per-participant and per-activity basis. In order to satisfy the tidy data principles, the data is presented in the following way:
+* The observations for each participant is stored in a separate table
+* Each activity's observations are rows in the tables
+* The mean of each measurement taken during an activity is its own column
+
+### How to view the data
 
 
 

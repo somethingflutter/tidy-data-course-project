@@ -12,38 +12,30 @@ combinedTrain <- bind_cols(trainType, trainData)
 combinedData <- bind_rows(combinedTest, combinedTrain)
 rm("testData"); rm("trainData"); rm("testType"); rm("trainType")
 rm("combinedTest"); rm("combinedTrain")
+
 ##  Extracts only the measurements on the mean and standard deviation for each measurement. 
 meanAndStdDevData <- select(combinedData, activity, V1:V6, V41:V46, V81:V86, V121:V126, V161:V166, 
                             V201:V202, V214:V215, V227:V228, V240:V241, V253:V254, V266:V271,
                             V345:V350, V373:V375, V424:V429, V503:V504, V516:V517, V529:V530,
                             V552, V555:V561)
 rm("combinedData")
+
 ##  Uses descriptive activity names to name the activities in the data set
 meanAndStdDevData$activity <- as.factor(meanAndStdDevData$activity)
 levels(meanAndStdDevData$activity) <- c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS",
                                         "SITTING", "STANDING", "LAYING")
 
-
-
+##  Appropriately labels the data set with descriptive variable names.
 columnNames <- read.table("./UCI HAR Dataset/features.txt", stringsAsFactors = FALSE)
 for(i in seq_along(meanAndStdDevData)){
     vNum <- extract_numeric(names(meanAndStdDevData[i]))
-    names(meanAndStdDevData)[i] = columnNames[[2]][vNum]
+    if (!is.na(vNum)){ names(meanAndStdDevData)[i] <- columnNames[[2]][vNum] }
 }
 
-
-##  Appropriately labels the data set with descriptive variable names. 
 ##  From the data set in step 4, creates a second, independent tidy data set 
 ##      with the average of each variable for each activity and each subject.
 
 
-##by the end of Step 3 you have replaced the numeric codes for activity with 
-##  the corresponding alphabetic value from another of the data files;
-##by the end of Step 4 you have modified the original variable names (column names) 
-##  with names conforming to both the R naming standard and the convention
-##  introduced by the tidy data principles; domain experts would likely 
-##  consider the names as already easy to read but you want non-domain experts 
-##  to understand the content of each column; and
 ##by the end of Step 5 you have a separate tidy data set containing 
 ##  observations consisting of study participants, activities performed during 
 ##  the study, and a computed average for each of the measurement variables.
